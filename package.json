@@ -1,0 +1,25 @@
+{
+  "name": "test-js-customer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint *.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrashMaster8497/test-js-customer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrashMaster8497/test-js-customer/issues"
+  },
+  "homepage": "https://github.com/CrashMaster8497/test-js-customer#readme",
+  "devDependencies": {
+    "eslint": "8.23.0",
+    "jest": "29.0.3",
+    "prettier": "2.7.1"
+  }
+}
