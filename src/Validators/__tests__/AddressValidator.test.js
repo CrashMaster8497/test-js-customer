@@ -1,15 +1,12 @@
-const { Address } = require('../../Entities/Address');
 const { AddressValidator } = require('../AddressValidator');
-
-const getDefaultAddress = () =>
-    new Address('Line', 'Line2', 1, 'City', '000000', 'State', 'United States');
+const { Fixture } = require('./Fixture');
 
 describe('AddressValidator', () => {
     const emptyAddressLineCases = [undefined, ''];
     test.each(emptyAddressLineCases)(
         'should return Address Line required for %p',
         (addressLine) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressLine = addressLine;
 
             const errors = AddressValidator.validate(address);
@@ -22,7 +19,7 @@ describe('AddressValidator', () => {
     test.each(longAddressLineCases)(
         'should return Address Line too long for %p',
         (addressLine) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressLine = addressLine;
 
             const errors = AddressValidator.validate(address);
@@ -35,7 +32,7 @@ describe('AddressValidator', () => {
     test.each(correctAddressLineCases)(
         'should not return Address Line error for %p',
         (addressLine) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressLine = addressLine;
 
             const errors = AddressValidator.validate(address);
@@ -49,7 +46,7 @@ describe('AddressValidator', () => {
     test.each(longAddressLine2Cases)(
         'should return Address Line 2 too long for %p',
         (addressLine2) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressLine2 = addressLine2;
 
             const errors = AddressValidator.validate(address);
@@ -67,7 +64,7 @@ describe('AddressValidator', () => {
     test.each(correctAddressLine2Cases)(
         'should not return Address Line 2 error for %p',
         (addressLine2) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressLine2 = addressLine2;
 
             const errors = AddressValidator.validate(address);
@@ -80,7 +77,7 @@ describe('AddressValidator', () => {
     test.each(incorrectAddressTypeCases)(
         'should return Address Type incorrect for %p',
         (addressType) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressType = addressType;
 
             const errors = AddressValidator.validate(address);
@@ -93,7 +90,7 @@ describe('AddressValidator', () => {
     test.each(correctAddressTypeCases)(
         'should not return Address Type error for %p',
         (addressType) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.addressType = addressType;
 
             const errors = AddressValidator.validate(address);
@@ -104,7 +101,7 @@ describe('AddressValidator', () => {
 
     const emptyCityCases = [undefined, ''];
     test.each(emptyCityCases)('should return City required for %p', (city) => {
-        let address = getDefaultAddress();
+        let address = Fixture.getDefaultAddress();
         address.city = city;
 
         const errors = AddressValidator.validate(address);
@@ -114,7 +111,7 @@ describe('AddressValidator', () => {
 
     const longCityCases = ['a'.repeat(51)];
     test.each(longCityCases)('should return City too long for %p', (city) => {
-        let address = getDefaultAddress();
+        let address = Fixture.getDefaultAddress();
         address.city = city;
 
         const errors = AddressValidator.validate(address);
@@ -126,7 +123,7 @@ describe('AddressValidator', () => {
     test.each(correctCityCases)(
         'should not return City error for %p',
         (city) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.city = city;
 
             const errors = AddressValidator.validate(address);
@@ -140,7 +137,7 @@ describe('AddressValidator', () => {
     test.each(emptyPostalCodeCases)(
         'should return Postal Code required for %p',
         (postalCode) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.postalCode = postalCode;
 
             const errors = AddressValidator.validate(address);
@@ -153,7 +150,7 @@ describe('AddressValidator', () => {
     test.each(longPostalCodeCases)(
         'should return Postal Code too long for %p',
         (postalCode) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.postalCode = postalCode;
 
             const errors = AddressValidator.validate(address);
@@ -166,7 +163,7 @@ describe('AddressValidator', () => {
     test.each(correctPostalCodeCases)(
         'should not return Postal Code error for %p',
         (postalCode) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.postalCode = postalCode;
 
             const errors = AddressValidator.validate(address);
@@ -180,7 +177,7 @@ describe('AddressValidator', () => {
     test.each(emptyStateCases)(
         'should return State required for %p',
         (state) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.state = state;
 
             const errors = AddressValidator.validate(address);
@@ -193,7 +190,7 @@ describe('AddressValidator', () => {
     test.each(longStateCases)(
         'should return State too long for %p',
         (state) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.state = state;
 
             const errors = AddressValidator.validate(address);
@@ -206,7 +203,7 @@ describe('AddressValidator', () => {
     test.each(correctStateCases)(
         'should not return State error for %p',
         (state) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.state = state;
 
             const errors = AddressValidator.validate(address);
@@ -220,7 +217,7 @@ describe('AddressValidator', () => {
     test.each(incorrectCountryCases)(
         'should return Country incorrect or unavailable for %p',
         (country) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.country = country;
 
             const errors = AddressValidator.validate(address);
@@ -233,7 +230,7 @@ describe('AddressValidator', () => {
     test.each(correctCountryCases)(
         'should not return Country error for %p',
         (country) => {
-            let address = getDefaultAddress();
+            let address = Fixture.getDefaultAddress();
             address.country = country;
 
             const errors = AddressValidator.validate(address);
