@@ -17,6 +17,7 @@ describe('CustomerValidator', () => {
 
     const correctFirstNameCases = [
         undefined,
+        null,
         '',
         'a'.repeat(1),
         'a'.repeat(50),
@@ -207,6 +208,19 @@ describe('CustomerValidator', () => {
             const errors = CustomerValidator.validate(customer);
 
             expect(errors).not.toContain('At least one Note required');
+        }
+    );
+
+    const correctTotalPurchasesAmountCases = [undefined, null, -1, 0, 1, 0.5];
+    test.each(correctTotalPurchasesAmountCases)(
+        'should not return any errors for %p',
+        (totalPurchasesAmount) => {
+            let customer = Fixture.getDefaultCustomer();
+            customer.totalPurchasesAmount = totalPurchasesAmount;
+
+            const errors = CustomerValidator.validate(customer);
+
+            expect(errors).toEqual([]);
         }
     );
 

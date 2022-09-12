@@ -2,7 +2,7 @@ const { AddressValidator } = require('../AddressValidator');
 const { Fixture } = require('./Fixture');
 
 describe('AddressValidator', () => {
-    const emptyAddressLineCases = [undefined, ''];
+    const emptyAddressLineCases = [undefined, null, ''];
     test.each(emptyAddressLineCases)(
         'should return Address Line required for %p',
         (addressLine) => {
@@ -57,6 +57,7 @@ describe('AddressValidator', () => {
 
     const correctAddressLine2Cases = [
         undefined,
+        null,
         '',
         'a'.repeat(1),
         'a'.repeat(100),
@@ -73,7 +74,7 @@ describe('AddressValidator', () => {
         }
     );
 
-    const incorrectAddressTypeCases = [-1, 0, 3];
+    const incorrectAddressTypeCases = [undefined, null, -1, 0, 3];
     test.each(incorrectAddressTypeCases)(
         'should return Address Type incorrect for %p',
         (addressType) => {
@@ -99,7 +100,7 @@ describe('AddressValidator', () => {
         }
     );
 
-    const emptyCityCases = [undefined, ''];
+    const emptyCityCases = [undefined, null, ''];
     test.each(emptyCityCases)('should return City required for %p', (city) => {
         let address = Fixture.getDefaultAddress();
         address.city = city;
@@ -133,7 +134,7 @@ describe('AddressValidator', () => {
         }
     );
 
-    const emptyPostalCodeCases = [undefined, ''];
+    const emptyPostalCodeCases = [undefined, null, ''];
     test.each(emptyPostalCodeCases)(
         'should return Postal Code required for %p',
         (postalCode) => {
@@ -173,7 +174,7 @@ describe('AddressValidator', () => {
         }
     );
 
-    const emptyStateCases = [undefined, ''];
+    const emptyStateCases = [undefined, null, ''];
     test.each(emptyStateCases)(
         'should return State required for %p',
         (state) => {
@@ -213,7 +214,7 @@ describe('AddressValidator', () => {
         }
     );
 
-    const incorrectCountryCases = [undefined, '', 'Country'];
+    const incorrectCountryCases = [undefined, null, '', 'Country'];
     test.each(incorrectCountryCases)(
         'should return Country incorrect or unavailable for %p',
         (country) => {
