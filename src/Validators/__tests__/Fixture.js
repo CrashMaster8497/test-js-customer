@@ -1,8 +1,6 @@
 const { Address } = require('../../Entities/Address');
 const { Customer } = require('../../Entities/Customer');
 
-test.skip('skip', () => {});
-
 class Fixture {
     static getDefaultAddress = () => {
         return new Address(

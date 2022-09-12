@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint *.js",
+    "prettier": "prettier --check *.js",
     "test": "jest"
   },
   "repository": {
