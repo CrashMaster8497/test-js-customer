@@ -33,10 +33,10 @@ jobs:
 
       - name: Prettier check
         run: |
-          npx prettier --check
+          npm run prettier
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./coverage
